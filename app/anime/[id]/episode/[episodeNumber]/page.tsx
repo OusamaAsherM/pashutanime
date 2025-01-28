@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import type { PageProps } from "next"
 
 const episodeData = {
   id: 1,
@@ -25,9 +26,10 @@ interface EpisodePageProps {
     id: string
     episodeNumber: string
   }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-export default function EpisodePage({ params }: EpisodePageProps) {
+export default function EpisodePage({ params, searchParams }: EpisodePageProps) {
   const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url)
 
   return (
