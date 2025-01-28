@@ -28,11 +28,7 @@ interface EpisodePageProps {
 }
 
 export default function EpisodePage({ params }: EpisodePageProps) {
-  if (!params || !params.id || !params.episodeNumber) {
-    return <div>Error: Invalid episode parameters provided.</div>
-  }
-
-  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0]?.url || "")
+  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url)
 
   return (
     <div className="space-y-6">
@@ -95,3 +91,4 @@ export default function EpisodePage({ params }: EpisodePageProps) {
     </div>
   )
 }
+
