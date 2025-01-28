@@ -37,7 +37,7 @@ export default function AnimeList() {
           onChange={(e) => setFilter({ ...filter, genre: e.target.value })}
           className="p-2 rounded border dark:bg-gray-700"
         >
-          <option value="">כל הז'אנרים</option>
+          <option value="">כל הז&apos;אנרים</option>
           <option value="Action">אקשן</option>
           <option value="Romance">רומנטיקה</option>
           {/* Add more genre options */}
