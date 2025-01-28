@@ -40,7 +40,7 @@ export default function SearchPage() {
           onChange={(e) => setFilters({ ...filters, genre: e.target.value })}
           className="p-2 rounded border dark:bg-gray-700"
         >
-          <option value="">כל הז'אנרים</option>
+          <option value="">כל הז&apos;אנרים</option>
           <option value="Action">אקשן</option>
           <option value="Adventure">הרפתקאות</option>
           <option value="Romance">רומנטיקה</option>
@@ -83,7 +83,7 @@ export default function SearchPage() {
             />
             <h2 className="font-semibold">{anime.title}</h2>
             <p className="text-sm text-gray-600 dark:text-gray-400">שנה: {anime.year}</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">ז'אנר: {anime.genre}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">ז&apos;אנר: {anime.genre}</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">סוג: {anime.type === "series" ? "סדרה" : "סרט"}</p>
           </Link>
         ))}
