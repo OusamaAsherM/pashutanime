@@ -20,8 +20,8 @@ const episodeData = {
   ],
 };
 
-export default function EpisodePage({ params }: { params: { id: string; episodeNumber: string } }) {
-  const [selectedSubtitle, setSelectedSubtitle] = useState<string>(episodeData.subtitles[0].url);
+export default function EpisodePageClient({ params }: { params: { id: string; episodeNumber: string } }) {
+  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url);
 
   return (
     <div className="space-y-6">
@@ -83,9 +83,4 @@ export default function EpisodePage({ params }: { params: { id: string; episodeN
       </div>
     </div>
   );
-}
-
-// Correct the dynamic route type inference
-export async function generateStaticParams() {
-  return [{ id: "1", episodeNumber: "1" }];
 }
