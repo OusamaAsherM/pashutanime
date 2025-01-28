@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import type { PageProps } from "next"
 
 const episodeData = {
   id: 1,
@@ -26,11 +25,14 @@ interface EpisodePageProps {
     id: string
     episodeNumber: string
   }
-  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-export default function EpisodePage({ params, searchParams }: EpisodePageProps) {
-  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url)
+export default function EpisodePage({ params }: EpisodePageProps) {
+  if (!params || !params.id || !params.episodeNumber) {
+    return <div>Error: Invalid episode parameters provided.</div>
+  }
+
+  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0]?.url || "")
 
   return (
     <div className="space-y-6">
@@ -93,4 +95,3 @@ export default function EpisodePage({ params, searchParams }: EpisodePageProps) 
     </div>
   )
 }
-
