@@ -39,7 +39,7 @@ export default function AnimePage() {
           <p className="text-gray-600 dark:text-gray-400">שמות חלופיים: {anime.alternativeNames.join(", ")}</p>
           <p>{anime.synopsis}</p>
           <div>
-            <h2 className="text-xl font-semibold">ז'אנרים:</h2>
+            <h2 className="text-xl font-semibold">ז&apos;אנרים:</h2>
             <div className="flex flex-wrap gap-2">
               {anime.genres.map((genre) => (
                 <span key={genre} className="bg-accent text-white px-2 py-1 rounded-full text-sm">
