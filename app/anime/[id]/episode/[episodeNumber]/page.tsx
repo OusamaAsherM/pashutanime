@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from "react"
+import Link from "next/link"
 
 const episodeData = {
   id: 1,
@@ -18,10 +18,17 @@ const episodeData = {
     { language: "English", url: "https://example.com/subs/en.vtt" },
     { language: "Spanish", url: "https://example.com/subs/es.vtt" },
   ],
-};
+}
 
-export default function EpisodePageClient({ params }: { params: { id: string; episodeNumber: string } }) {
-  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url);
+interface EpisodePageProps {
+  params: {
+    id: string
+    episodeNumber: string
+  }
+}
+
+export default function EpisodePage({ params }: EpisodePageProps) {
+  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url)
 
   return (
     <div className="space-y-6">
@@ -82,5 +89,6 @@ export default function EpisodePageClient({ params }: { params: { id: string; ep
         <p>מערכת תגובות תגיע בקרוב...</p>
       </div>
     </div>
-  );
+  )
 }
+
