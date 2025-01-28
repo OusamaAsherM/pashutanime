@@ -18,9 +18,9 @@ const animeData = {
   translationNotes: "Some cultural references were adapted for clarity.",
 }
 
-export default function AnimePage({ params }: { params: { id: string } }) {
+export default function AnimePage() {
   // In a real app, you'd fetch the anime data based on the ID
-  const anime = animeData
+  const anime = animeData;
 
   return (
     <div className="space-y-6">
