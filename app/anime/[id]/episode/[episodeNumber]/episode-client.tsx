@@ -20,14 +20,14 @@ const episodeData = {
   ],
 }
 
-interface EpisodePageProps {
+interface EpisodeClientProps {
   params: {
     id: string
     episodeNumber: string
   }
 }
 
-export default function EpisodePage({ params }: EpisodePageProps) {
+export default function EpisodeClient({ params }: EpisodeClientProps) {
   const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url)
 
   return (
