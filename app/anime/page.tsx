@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 const animeList = [
-  { id: 1, title: "Anime 1", year: 2023, episodes: 12, status: "Ongoing", genre: "Action" },
+  { id: 1, title: "Anime 1", year: 2023, episodes: 15, status: "Ongoing", genre: "Action" },
   { id: 2, title: "Anime 2", year: 2022, episodes: 24, status: "Completed", genre: "Romance" },
   // Add more anime entries...
 ]
