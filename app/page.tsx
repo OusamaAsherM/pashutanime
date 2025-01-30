@@ -42,7 +42,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <Image
-                src={`/anime-placeholder-${i}.jpg`}
+                src={`/anime-placeholder-${1}.jpg`}
                 alt={`Anime ${i}`}
                 width={300}
                 height={450}
