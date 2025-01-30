@@ -6,7 +6,7 @@ const animeData = {
   title: "Sample Anime",
   alternativeNames: ["サンプルアニメ", "Anime de Ejemplo"],
   coverImage: "/anime-cover.jpg",
-  trailer: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  trailer: "https://drive.google.com/file/d/1AkHj8M2s-2WfQcHxGk-AN97fvJ_qrpV7/view",
   synopsis: "This is a sample anime synopsis. It tells the story of...",
   genres: ["Action", "Comedy", "Sci-Fi"],
   episodes: [
