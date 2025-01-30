@@ -72,27 +72,27 @@ export default function AnimeList() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {sortedAnime.map((anime) => (
-          <Link
-            href={`/anime/${anime.id}`}
-            key={anime.id}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow"
-          >
-            <Image
-              src={`/anime-placeholder-${anime.id}.jpg`}
-              alt={anime.title}
-              width={200}
-              height={300}
-              className="rounded-lg mb-2"
-            />
-            <h2 className="font-semibold">{anime.title}</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400">שנה: {anime.year}</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">פרקים: {anime.episodes}</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">סטטוס: {anime.status}</p>
-          </Link>
-        ))}
-      </div>
-    </div>
-  )
-}
+{sortedAnime.length === 0 ? (
+  <p>לא נמצאו תוצאות תואמות</p>
+) : (
+  sortedAnime.map((anime) => (
+    <Link
+      href={`/anime/${anime.id}`}
+      key={anime.id}
+      className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow"
+    >
+      <Image
+        src={`/anime-placeholder-${anime.id}.jpg`}
+        alt={anime.title}
+        width={200}
+        height={300}
+        className="rounded-lg mb-2"
+      />
+      <h2 className="font-semibold">{anime.title}</h2>
+      <p className="text-sm text-gray-600 dark:text-gray-400">שנה: {anime.year}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">פרקים: {anime.episodes}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">סטטוס: {anime.status}</p>
+    </Link>
+  ))
+)}
 
