@@ -47,6 +47,7 @@ export default function Home() {
                 width={300}
                 height={450}
                 className="w-full h-64 object-cover"
+                onError={(e) => e.target.src = "/header.jpg"}
               />
               <div className="p-4">
                 <h3 className="font-semibold text-lg mb-2">Anime Title {i}</h3>
