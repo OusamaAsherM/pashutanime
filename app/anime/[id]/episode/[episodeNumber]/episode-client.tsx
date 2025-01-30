@@ -8,7 +8,7 @@ const episodeData = {
   animeId: 1,
   number: 1,
   title: "The Beginning",
-  videoUrl: "https://example.com/video.mp4",
+  videoUrl: "<iframe src="https://drive.google.com/file/d/1AkHj8M2s-2WfQcHxGk-AN97fvJ_qrpV7/preview" width="640" height="480" allow="autoplay"></iframe>",
   downloadLinks: [
     { resolution: "480p", url: "https://example.com/download/480p" },
     { resolution: "720p", url: "https://example.com/download/720p" },
