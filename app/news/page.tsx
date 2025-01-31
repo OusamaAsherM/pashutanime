@@ -5,7 +5,7 @@ const newsItems = [
     id: 1,
     title: "New Anime Series Added",
     date: "2023-07-15",
-    category: "New Releases",
+    category: "הוצאות חדשות",
     excerpt: "We've just added the latest hit anime series to our collection...",
   },
   {
