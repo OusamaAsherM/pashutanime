@@ -102,29 +102,13 @@ export default function ContactPage() {
         <h2 className="text-2xl font-bold mb-2">התחברו איתנו</h2>
         <p>עקבו אחרינו ברשתות החברתיות לעדכונים האחרונים:</p>
         <div className="flex space-x-4 mt-2">
-          <a
-            href="https://twitter.com/animefansub"
+          <a style={{color: "white"}}
+            href="https://discord.com/invite/EHrFVCrG5Q"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:underline"
           >
-            Twitter
-          </a>
-          <a
-            href="https://facebook.com/animefansub"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            Facebook
-          </a>
-          <a
-            href="https://instagram.com/animefansub"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            Instagram
+            Discord
           </a>
         </div>
       </section>

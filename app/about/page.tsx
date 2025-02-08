@@ -1,9 +1,9 @@
 import Image from "next/image"
 
 const teamMembers = [
-  { name: "John Doe", role: "Translator", avatar: "/avatar-1.jpg" },
-  { name: "Jane Smith", role: "Editor", avatar: "/avatar-2.jpg" },
-  { name: "Mike Johnson", role: "Typesetter", avatar: "/avatar-3.jpg" },
+  { name: "ssf0g", role: "", avatar: "/avatar-1.png" },
+  { name: "RoeiG", role: "", avatar: "/avatar-2.png" },
+  { name: "Raito", role: "", avatar: "/avatar-3.png" },
   // Add more team members...
 ]
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
           {teamMembers.map((member) => (
             <div key={member.name} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 text-center">
               <Image
-                src={member.avatar || "/placeholder.svg"}
+                src={member.avatar || "/placeholder.png"}
                 alt={member.name}
                 width={100}
                 height={100}
@@ -50,13 +50,13 @@ export default function AboutPage() {
         </p>
         <p className="mt-2">
           הצטרפו לקהילה שלנו בדיסקורד:
-          <a
-            href="https://discord.gg/pashutanime"
+          <a style={{color: "white"}}
+            href="https://discord.gg/EHrFVCrG5Q"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:underline mr-1"
           >
-            https://discord.gg/pashutanime
+            https://discord.gg/EHrFVCrG5Q
           </a>
         </p>
       </section>

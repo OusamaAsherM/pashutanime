@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="space-y-12 py-12">
       <section className="relative h-[70vh]">
-        <Image src="/hero-banner.jpg" alt="Featured Anime" layout="fill" objectFit="cover" className="rounded-lg" />
+        <Image src="/header.jpg" alt="Featured Anime" layout="fill" objectFit="cover" className="rounded-lg" />
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <motion.h1
             className="text-4xl md:text-6xl font-bold text-white text-center"
@@ -23,7 +23,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4">
+       <section className="container mx-auto px-4">
         <motion.h2
           className="text-3xl font-bold mb-6"
           initial={{ opacity: 0, y: 20 }}

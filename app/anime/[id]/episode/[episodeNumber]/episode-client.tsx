@@ -1,91 +1,1014 @@
 "use client"
-
-import { useState } from "react"
+import { useParams } from "next/navigation"
 import Link from "next/link"
 
-const episodeData = {
-  id: 1,
-  animeId: 1,
-  number: 1,
-  title: "The Beginning",
-  videoUrl: "https://example.com/video.mp4",
-  downloadLinks: [
-    { resolution: "480p", url: "https://example.com/download/480p" },
-    { resolution: "720p", url: "https://example.com/download/720p" },
-    { resolution: "1080p", url: "https://example.com/download/1080p" },
-  ],
-  subtitles: [
-    { language: "English", url: "https://example.com/subs/en.vtt" },
-    { language: "Spanish", url: "https://example.com/subs/es.vtt" },
-  ],
-}
+const episodes = [
+  {
+    id: 1,
+    animeId: 1,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1AkHj8M2s-2WfQcHxGk-AN97fvJ_qrpV7/preview",
+  },
+  {
+    id: 2,
+    animeId: 1,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1ydBAr8iyky76hkTJywm_M9WZ5_UJDb6v/preview",
+  },
+  {
+    id: 3,
+    animeId: 1,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1XJQ8336-hn961UwwXXYIa41YaDqd5kOZ/preview",
+  },
+  {
+    id: 4,
+    animeId: 1,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1ZaPF9So8yy8G5Rtv0dH-9W9V2ASSimsT/preview",
+  },
+  {
+    id: 5,
+    animeId: 1,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/18N_wpzogWanDTsFSfGn0guCrxcRHLqai/preview",
+  },
+  {
+    id: 6,
+    animeId: 1,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1bfn94J7VHOmyUR152rYbvguc-2FsRDP2/preview",
+  },
+  {
+    id: 7,
+    animeId: 1,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1m7g-M3CS_oBuaZRFfOhT66-ftPftfBqR/preview",
+  },
+  {
+    id: 8,
+    animeId: 1,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1foMvjK6uvLfSN-s96AtfXlxFkPNYomMl/preview",
+  },
+  {
+    id: 9,
+    animeId: 1,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1ZQVFr_EomnIHm3tl7VAIChSjtdyn715k/preview",
+  },
+  {
+    id: 10,
+    animeId: 1,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1eaJiYj_hTZMNLDJ8QNYI5uasAzL_C8Kl/preview",
+  },
+  {
+    id: 11,
+    animeId: 1,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/11PKkQvMzZ2RAaZy191jDk_h6nvoZpJ49/preview",
+  },
+  {
+    id: 12,
+    animeId: 1,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/19sUakWD1MfNl9ZRlv0hcYET9ub6umoJx/preview",
+  },
+  {
+    id: 13,
+    animeId: 2,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/17sQugSAuZPgw2hbESD6djZWFzRszzLIQ/preview",
+  },
+  {
+    id: 14,
+    animeId: 2,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1QqLZPXTi9jAuoIdfIJp5fGdtTu52_6li/preview",
+  },
+  {
+    id: 15,
+    animeId: 2,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1rxzk9FsxFBcG85XziUdKGLdxH25wUBjq/preview",
+  },
+  {
+    id: 16,
+    animeId: 2,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1iAE9RP7uerEsn3tflJDcw8D-famNiQIU/preview",
+  },
+  {
+    id: 17,
+    animeId: 2,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1LBZHmptL0bxI2GZdwEExgM9eMYPVk52Q/preview",
+  },
+  {
+    id: 18,
+    animeId: 2,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1XBrLfX3bDLu4BruB2IFOGYHGdMdm5K4t/preview",
+  },
+  {
+    id: 19,
+    animeId: 2,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Cwb2f9njsR0WsBCJYVDcY9APDGax_tvr/preview",
+  },
+  {
+    id: 20,
+    animeId: 2,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1_bRLt8Wiway317hUcXKgiqhxXAG9G3_N/preview",
+  },
+  {
+    id: 21,
+    animeId: 2,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1UAp924ftXjv6ShPXbq0my6ukmbYbXIyR/preview",
+  },
+  {
+    id: 22,
+    animeId: 2,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1D1jjW2U8FIN2xXfPxTyobuT4N25qrt5g/preview",
+  },
+  {
+    id: 23,
+    animeId: 2,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1ndCavqFFuiJtfrsFZ03wk63T0wZQBQb9/preview",
+  },
+  {
+    id: 24,
+    animeId: 2,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1dI405RjuHQ2A2CmhwHCIbrSEIbO5V0TG/preview",
+  },
+  {
+    id: 25,
+    animeId: 2,
+    number: 13,
+    title: "פרק ספיישל",
+    videoUrl: "https://drive.google.com/file/d/16QHPwlqd2WIDyWH-S-SRDvgKE3JgSODa/preview",
+  },
+  {
+    id: 26,
+    animeId: 3,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1rYhI_ULiO7D8fqfL-BpyqQ71rI34-x80/preview",
+  },
+  {
+    id: 27,
+    animeId: 3,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Cc4uIb0Kk23ntqVDpc4Sv5tew_L1p_pC/preview",
+  },
+  {
+    id: 28,
+    animeId: 3,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Zp7f2kMEEk-Z4tkl9Ot7EkvctQWaqm4W/preview",
+  },
+  {
+    id: 29,
+    animeId: 3,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/12rxDXmfqoQBIVEjwRSfL-gVsEXKFzVdp/preview",
+  },
+  {
+    id: 30,
+    animeId: 3,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1-DJiogMO6alKeYEQAzI3nWodXt6fCLJD/preview",
+  },
+  {
+    id: 31,
+    animeId: 3,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1rYGgre7fiqnEG3WpXqQpbVriVliNZuCp/preview",
+  },
+  {
+    id: 32,
+    animeId: 3,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1WCUBoDSnnsQu_xpyrtLO7q6USJ7glvIT/preview",
+  },
+  {
+    id: 33,
+    animeId: 3,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1HirjE89CmLJRtpiOzrj9MWw54DcGgWE4/preview",
+  },
+  {
+    id: 34,
+    animeId: 3,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1SkSglESKsYiuHfkqcTSgOfutIMgePZgN/preview",
+  },
+  {
+    id: 35,
+    animeId: 3,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1w_GTb8LtDWZf2EYcBQg3cWnbrSAFlON4/preview",
+  },
+  {
+    id: 36,
+    animeId: 3,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1F8XMqunFpp2OJckjDMG8MbQ76-sR0uXZ/preview",
+  },
+  {
+    id: 37,
+    animeId: 3,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1hAed9zzDK6ajxf-q8GTR6dKKP4MivbL2/preview",
+  },
+  {
+    id: 38,
+    animeId: 4,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/18nLPSdtZROAIHeuINAqJNsdXEs0jrJvZ/preview",
+  },
+  {
+    id: 39,
+    animeId: 4,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1WBOqboRC3CDkZHSapX_Pn9MjqJdC8bjg/preview",
+  },
+  {
+    id: 40,
+    animeId: 4,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1wgnFxzYyV6hgcUJ018WZRw6xhj1iFYEK/preview",
+  },
+  {
+    id: 41,
+    animeId: 4,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1y5mHHH0qGnmz8lPkfx8MY9aE2m3P5t_J/preview",
+  },
+  {
+    id: 42,
+    animeId: 4,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1cWz-OzTiNNln7YCG6v_9gm1m1hAwUyCY/preview",
+  },
+  {
+    id: 43,
+    animeId: 4,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/14tWvhl_xeZcMOd6h6fJFVZ62cOVkFuGP/preview",
+  },
+  {
+    id: 44,
+    animeId: 4,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1clBqWrdtIX4YD3OovsziQpYUtZv9yzxH/preview",
+  },
+  {
+    id: 45,
+    animeId: 4,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1T2KtnTNsZvABV3qpbnEIaUfT-rrW9GH3/preview",
+  },
+  {
+    id: 46,
+    animeId: 4,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/129zKueREEQP-spVKy5gNYXxtv-Az9Gn-/preview",
+  },
+  {
+    id: 47,
+    animeId: 4,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1fuoJwkGxrGs2AB1IFWsYOqlWMlt2tgE4/preview",
+  },
+  {
+    id: 48,
+    animeId: 4,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1sHHE6xVjEjV8FmyZHMYgQM7aCt5RyD_y/preview",
+  },
+  {
+    id: 49,
+    animeId: 4,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Y-GRohE3moNrFMioydyCTxH6zgd3uSn-/preview",
+  },
+  {
+    id: 50,
+    animeId: 5,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1JO-j6KI2tDfICGAwE979Al-zx6bkgFlv/preview",
+  },
+  {
+    id: 51,
+    animeId: 5,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1vUlo-uSkhyHAiO1LI_Ay3rjlZdw8KJH_/preview",
+  },
+  {
+    id: 52,
+    animeId: 5,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1_yx6p2mAqUNlHxqqX_o7qNXFNHd9LXE8/preview",
+  },
+  {
+    id: 53,
+    animeId: 5,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1yUy_FB2i-sjXqi99iJe78t8QVww4yh0d/preview",
+  },
+  {
+    id: 54,
+    animeId: 5,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1qCWTDvoeUmCbEBJl3zlfA7qp8eKkL7lv/preview",
+  },
+  {
+    id: 55,
+    animeId: 5,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1aKie0zw3EoRjMnZh-XprUe75SRzuuMNW/preview",
+  },
+  {
+    id: 56,
+    animeId: 5,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1sTnb_4kccBZC2JBJTVm4nEiT9_WvwPv0/preview",
+  },
+  {
+    id: 57,
+    animeId: 5,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1NNJJmILs4_kykcx28fSWzjDfnCnFSjgF/preview",
+  },
+  {
+    id: 58,
+    animeId: 5,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Fk2tM_SJ7F_FXiE66E9xasu0aEzPIenb/preview",
+  },
+  {
+    id: 59,
+    animeId: 5,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1kf0S9OEq6yjYRM_sm4byM1cR3t9ZcNBP/preview",
+  },
+  {
+    id: 60,
+    animeId: 5,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Dg5PrxkAtcc5np0j4xj6DOq7DD2ySr7e/preview",
+  },
+  {
+    id: 61,
+    animeId: 5,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/18k0jI4xF9EtJazybG-qyvthDxQdfM5Dc/preview",
+  },
+  {
+    id: 62,
+    animeId: 6,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1MDLejM18x3tc2ITdRmJ8JArDeO4jLKHA/preview",
+  },
+  {
+    id: 63,
+    animeId: 6,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1aimx92R6Fa_Uyui9ZaemduPi-Wx7z0Uf/preview",
+  },
+  {
+    id: 64,
+    animeId: 6,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1fl6ea7INvatyf8AYskvC31ZANx37gFof/preview",
+  },
+  {
+    id: 65,
+    animeId: 6,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1nsV-atayOZCdfR-knGxXOEx-w8agcQ_O/preview",
+  },
+  {
+    id: 66,
+    animeId: 6,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Q4FFEjGWACb5p3K0inKhpnJymD4P65Gy/preview",
+  },
+  {
+    id: 67,
+    animeId: 6,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1BzqOUPg56dHPZ_meYJH3gvWG-Qkd4idJ/preview",
+  },
+  {
+    id: 68,
+    animeId: 6,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/13vNSK8BltZmK4S82t8-vvrL71Hi_rb2N/preview",
+  },
+  {
+    id: 69,
+    animeId: 6,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1kfVNJlEHlcYAeNmzHSqIqiP4w4UZdMOw/preview",
+  },
+  {
+    id: 70,
+    animeId: 6,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1mzc8QKUQ0ap8TXidDP5f4ytz7EAmd9-J/preview",
+  },
+  {
+    id: 71,
+    animeId: 6,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1mXeEA0XFU554Nm4TpuuiZYxKXHaEOrJ4/preview",
+  },
+  {
+    id: 72,
+    animeId: 6,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1xRDIL7F3kyMbxB59bDYeD7bMTaymehMx/preview",
+  },
+  {
+    id: 73,
+    animeId: 6,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/19WLrFgVRIrtkzVewME4VjsnBYKy-UcSO/preview",
+  },
+  {
+    id: 74,
+    animeId: 7,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1YNOSnC9Okq70EBi_QT8b7OO9W23StfUT/preview",
+  },
+  {
+    id: 75,
+    animeId: 7,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1WiA_Z_Z1_yJXmGsqNq1auZtGBYa56GJu/preview",
+  },
+  {
+    id: 76,
+    animeId: 7,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1mYpe5EFDnIDxiiXvgjYSUDmg7G1dYMRM/preview",
+  },
+  {
+    id: 77,
+    animeId: 7,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1vldtbriAVd-hBz94yUVPuFfa76Vav3ae/preview",
+  },
+  {
+    id: 78,
+    animeId: 7,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1N7lfKlLS-jcURLo0AKm_qA2qrlJjbJx2/preview",
+  },
+  {
+    id: 79,
+    animeId: 7,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/19tgU8h9BvS38SSxboYaqKC1L8vufQhgZ/preview",
+  },
+  {
+    id: 80,
+    animeId: 7,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1X1McRVxTaVVZV6dPOH2KqJRYT_e4IdkA/preview",
+  },
+  {
+    id: 81,
+    animeId: 7,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1CjPc13w3Aa97IGhMNNpcmlGWvDt5yFQL/preview",
+  },
+  {
+    id: 82,
+    animeId: 7,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1DYyCpfpmJSOfT8mZ7Vfv-2aDTEnUtq7q/preview",
+  },
+  {
+    id: 83,
+    animeId: 7,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1AgAIE-q2zRfZP01yGQoDZjDTuf3AbM_u/preview",
+  },
+  {
+    id: 84,
+    animeId: 7,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1kwExPjTwVmbgTozTgzUK6NMxyEh0hxqQ/preview",
+  },
+  {
+    id: 85,
+    animeId: 7,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Dtj--WXnTEVnAl4uPWmMHrM4gbi3yHmP/preview",
+  },
+  {
+    id: 86,
+    animeId: 8,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1JM6H4X1JhGqrSqKnc2BuAn83qVXWJyoS/preview",
+  },
+  {
+    id: 87,
+    animeId: 8,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1QyzcpEEVirJs3l-oSj-6Isq8h3-GKG4c/preview",
+  },
+  {
+    id: 88,
+    animeId: 8,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1NoilkWrLWWp_XUl_ycg0GHu7GnF9L66B/preview",
+  },
+  {
+    id: 89,
+    animeId: 8,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1uJcNvdOxh0jpJh3-3cwom0XzFUwPY17T/preview",
+  },
+  {
+    id: 90,
+    animeId: 8,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1SFQFj3CcWsVGYvuXfY3jR9Gr5AjD8jSH/preview",
+  },
+  {
+    id: 91,
+    animeId: 8,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1fzdnCej-1YvDTo8HHhpmX4MulffxbfA3/preview",
+  },
+  {
+    id: 92,
+    animeId: 8,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/14vrNkoxL65Dog24jc6P2KdFcJnOT6XxT/preview",
+  },
+  {
+    id: 93,
+    animeId: 8,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1lO_xWwURbBDI0e3eKJQnEhUe_FNLdYl2/preview",
+  },
+  {
+    id: 94,
+    animeId: 8,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1hUD4hiiTKcUbISeWd2jTqOitneQVWL2-/preview",
+  },
+  {
+    id: 95,
+    animeId: 8,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1VEj2oe77ksI3ncAQ_LJ5WF72vtsPMp6w/preview",
+  },
+  {
+    id: 96,
+    animeId: 8,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/13TBp7Em-o6izu6lqU8TNOQSBqiTYwEb6/preview",
+  },
+  {
+    id: 97,
+    animeId: 8,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/159ZGMULWU1jEAPbxTdhUcNRa9s6OPrrG/preview",
+  },
+  {
+    id: 98,
+    animeId: 9,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1dYWVQm54dWU4yQroRetdeHukMIHx7Lu8/preview",
+  },
+  {
+    id: 99,
+    animeId: 9,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1RqlseqLGeCwK3blgJ0wWUHKpPp7Gj9Sl/preview",
+  },
+  {
+    id: 100,
+    animeId: 9,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Je7rzIPm-G-xDV3Nn5gIHlt4Bm9D44Ai/preview",
+  },
+  {
+    id: 101,
+    animeId: 9,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1KHfJ24c3JWQh6MYRrpadVSv6AA_TVNZx/preview",
+  },
+  {
+    id: 102,
+    animeId: 9,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1hY4hSgeCJbt_0BB0J2b4FxPi8FKJ4QA0/preview",
+  },
+  {
+    id: 103,
+    animeId: 9,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1KtNd-dx2TdfLcQCshGCf5OfuXmGccLL1/preview",
+  },
+  {
+    id: 104,
+    animeId: 9,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1L9uvZdIZwnyvELMG81mDHnRpqK_cA46d/preview",
+  },
+  {
+    id: 105,
+    animeId: 9,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/12et2HpAGkvLlYeysKqoro0HmkZ9mrTG-/preview",
+  },
+  {
+    id: 106,
+    animeId: 9,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1CKb8NE-P1WjNWp-fam6Vww3KBLu2MWCF/preview",
+  },
+  {
+    id: 107,
+    animeId: 9,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1rgoBviDxx5TaaZJt5noTT7v_oorkiO3J/preview",
+  },
+  {
+    id: 108,
+    animeId: 9,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1O6xKachRNHlTcmrkYJlQdqNWHIhal0XX/preview",
+  },
+  {
+    id: 109,
+    animeId: 9,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Z4JZOI3DLBi8pr_MSwDbaqOYrSiZ8lqf/preview",
+  },
+  {
+    id: 110,
+    animeId: 10,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1V778fq6Q4AXhkWEL9GFzmCZUFnGbRm2n/preview",
+  },
+  {
+    id: 111,
+    animeId: 10,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1nFT9Tjl-DiUT1DhUcMKBHZnGryA9Ap-D/preview",
+  },
+  {
+    id: 112,
+    animeId: 10,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1rXr_0CNPmmjJwk99bm3RhjZHef3umzqM/preview",
+  },
+  {
+    id: 113,
+    animeId: 10,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1LFw0-DNhRMRaS8ejZ2Y5Z96ug4JiuZ8b/preview",
+  },
+  {
+    id: 114,
+    animeId: 11,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1ooLP4FJyq1EfZ_1Bz2h3l3fb14cHCTaq/preview",
+  },
+  {
+    id: 115,
+    animeId: 11,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1Nj5suA2d2FAUgoZiFXzpVpnYHJ48owLk/preview",
+  },
+  {
+    id: 116,
+    animeId: 11,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/10UVEHI2SVCcCQIlNZ3GNGPFLW-TWKveW/preview",
+  },
+  {
+    id: 117,
+    animeId: 11,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1icIqUmpM00t881Yi1U-Cg8VpoA5rr2O7/preview",
+  },
+  {
+    id: 118,
+    animeId: 11,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1c7Gg2mgSBVqGy-j9yFDfr0jhL8W15amy/preview",
+  },
+  {
+    id: 119,
+    animeId: 11,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1IL7EV1sZQqT4I41T_1h6pDyR6wBAa_nI/preview",
+  },
+  {
+    id: 120,
+    animeId: 11,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1iMNpbyOzFkqGMvSJ-mt4YtX9rndaENV4/preview",
+  },
+  {
+    id: 121,
+    animeId: 11,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1BYxomGrecFQIxY2rzlVfgGAhCiL5QMda/preview",
+  },
+  {
+    id: 122,
+    animeId: 11,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1guvzS638Twhdl1oNFGzm4rXjfPLWBX3E/preview",
+  },
+  {
+    id: 123,
+    animeId: 11,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/11lSVyiVBOlzofmVnCO0XuBbOK9Un8aVa/preview",
+  },
+  {
+    id: 124,
+    animeId: 11,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1c4Fa1TyhaPinsKt0nP9LF6rfQDxxaQVF/preview",
+  },
+  {
+    id: 125,
+    animeId: 11,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1C5wCXN-ycMVUv5kgRO1izpBR2S8Ig--y/preview",
+  },
+  {
+    id: 126,
+    animeId: 12,
+    number: 1,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/15_Gfa-o779PQqN45sZSTA75CkiVIAbkL/preview",
+  },
+  {
+    id: 127,
+    animeId: 12,
+    number: 2,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1DYALJZqjvFfXfskWzDYvQcrwkj9s60l6/preview",
+  },
+  {
+    id: 128,
+    animeId: 12,
+    number: 3,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/1LrM1k8T4Zce2YVfILZ31BIAmktpRbVc7/preview",
+  },
+  {
+    id: 129,
+    animeId: 12,
+    number: 4,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 130,
+    animeId: 12,
+    number: 5,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 131,
+    animeId: 12,
+    number: 6,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 132,
+    animeId: 12,
+    number: 7,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 133,
+    animeId: 12,
+    number: 8,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 134,
+    animeId: 12,
+    number: 9,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 135,
+    animeId: 12,
+    number: 10,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 136,
+    animeId: 12,
+    number: 11,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+  {
+    id: 137,
+    animeId: 12,
+    number: 12,
+    title: "",
+    videoUrl: "https://drive.google.com/file/d/new-id-episode-here/preview",
+  },
+]
 
-interface EpisodeClientProps {
-  params: {
-    id: string
-    episodeNumber: string
+export default function EpisodeClient() {
+  const params = useParams()
+  const animeId = Number.parseInt(params.id, 10)
+  const episodeNumber = Number.parseInt(params.episodeNumber, 10)
+
+  if (isNaN(animeId) || isNaN(episodeNumber)) {
+    return <p className="text-red-500 text-xl font-bold">מספר האנימה או הפרק אינו תקין</p>
   }
-}
 
-export default function EpisodeClient({ params }: EpisodeClientProps) {
-  const [selectedSubtitle, setSelectedSubtitle] = useState(episodeData.subtitles[0].url)
+  const episode = episodes.find((ep) => ep.animeId === animeId && ep.number === episodeNumber)
+
+  if (!episode)
+    return <p className="text-red-500 text-xl font-bold">פרק {params.episodeNumber} לא נמצא עבור אנימה זו</p>
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">
-        פרק {episodeData.number}: {episodeData.title}
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-6">
+      <h1 className="text-3xl font-bold text-center">
+        פרק {episode.number}: {episode.title}
       </h1>
 
-      <div className="aspect-w-16 aspect-h-9">
-        <video controls className="w-full h-full rounded-lg" src={episodeData.videoUrl}>
-          <track kind="subtitles" src={selectedSubtitle} srcLang="en" label="English" />
-          Your browser does not support the video tag.
-        </video>
+      <div className="w-full max-w-5xl aspect-video min-h-[400px] flex justify-center">
+        <iframe src={episode.videoUrl} allow="autoplay" className="w-full h-full rounded-lg"></iframe>
       </div>
 
-      <div className="flex space-x-4">
-        <select
-          value={selectedSubtitle}
-          onChange={(e) => setSelectedSubtitle(e.target.value)}
-          className="p-2 rounded border dark:bg-gray-700"
-        >
-          {episodeData.subtitles.map((sub) => (
-            <option key={sub.language} value={sub.url}>
-              {sub.language === "English" ? "אנגלית" : sub.language === "Spanish" ? "ספרדית" : sub.language}
-            </option>
-          ))}
-        </select>
-
-        {episodeData.downloadLinks.map((link) => (
-          <a
-            key={link.resolution}
-            href={link.url}
-            className="bg-accent text-white px-4 py-2 rounded hover:bg-accent-dark transition-colors"
-            download
+      <div className="flex justify-between w-full max-w-5xl">
+        {episodeNumber > 1 && (
+          <Link
+            href={`/anime/${params.id}/episode/${episodeNumber - 1}`}
+            className="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
           >
-            הורד {link.resolution}
-          </a>
-        ))}
-      </div>
-
-      <div className="flex justify-between">
-        <Link
-          href={`/anime/${params.id}/episode/${Number(params.episodeNumber) - 1}`}
-          className="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-        >
-          לפרק הקודם
-        </Link>
-        <Link
-          href={`/anime/${params.id}/episode/${Number(params.episodeNumber) + 1}`}
-          className="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-        >
-          לפרק הבא
-        </Link>
+            לפרק הקודם
+          </Link>
+        )}
+        {episodes.some((ep) => ep.animeId === animeId && ep.number === episodeNumber + 1) && (
+          <Link
+            href={`/anime/${params.id}/episode/${episodeNumber + 1}`}
+            className="bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+          >
+            לפרק הבא
+          </Link>
+        )}
       </div>
 
       <div>
-        <h2 className="text-2xl font-bold mb-2">תגובות</h2>
-        {/* Implement comment section here */}
+        <h2 className="text-2xl font-bold mb-2 text-center">תגובות</h2>
         <p>מערכת תגובות תגיע בקרוב...</p>
       </div>
     </div>

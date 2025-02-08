@@ -3,10 +3,21 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { p } from "framer-motion/m"
 
 const animeList = [
-  { id: 1, title: "Anime 1", year: 2023, episodes: 12, status: "Ongoing", genre: "Action" },
-  { id: 2, title: "Anime 2", year: 2022, episodes: 24, status: "Completed", genre: "Romance" },
+  { id: 1, title: "השכנה המלאכית מפנקת אותי", year: 2023, episodes: 12, status: "הושלם", genre: "רומנטיקה", genre: "חיי בית ספר", genre: "חלק מהחיים", genre: "קומדיה"},
+  { id: 2, title: "עלמת חושך עם אמנזיה", year: 2012, episodes: 12, status: "הושלם", genre: "אקשן", genre: "אימה", genre: "מיסתורין", genre: "רומנטיקה", genre: "על טבעי", genre: "אצ'י", },
+  { id: 3, title: "נולד מחדש כדי לשלוט בלהב, ממלך גיבור לנושאת כלים יוצאת דופן", year: 2023, episodes: 12, status: "הושלם", genre: "אקשן", genre: "פנטזיה", genre: "קומדיה", genre: "הרפתקאות" },
+  { id: 4, title: "המהפכה הקסומה של הנסיכה שנולדה מחדש והגברת הצעירה הגאונה", year: 2023, episodes: 12, status: "הושלם", genre: "רומנטיקה", genre: "פנטזיה" },
+  { id: 5, title: "המלאכית הטיפשה רוקדת עם השד", year: 2024, episodes: 12, status: "הושלם", genre: "רומנטיקה", genre: "פנטזיה", genre: "על-טבעי" },
+  { id: 6, title: "שקרן שקרן", year: 2023, episodes: 12, status: "הושלם", genre: "פסיכולוגי", genre: "רומנטיקה" },
+  { id: 7, title: "ברמן: כוס האל", year: 2024, episodes: 12, status: "הושלם", genre: "דרמה", genre: "חלק מהחיים" },
+  { id: 8, title: "אליה סאן מסתירה את הרגשות שלה ברוסית", year: 2024, episodes: 12, status: "הושלם", genre: "קומדיה", genre: "רומנטיקה", genre: "חלק מהחיים" },
+  { id: 9, title: "סופר קאב", year: 2021, episodes: 12, status: "הושלם", genre: "חלק מהחיים" },
+  { id: 10, title: "אוזומאקי", year: 2024, episodes: 4, status: "הושלם", genre: "דרמה", genre: "אימה", genre: "מיסתורין", genre: "על-טבעי" },
+  { id: 11, title:"הנער החולם רוצה להיות מציאותי", year: 2023, episodes: 12, status: "הושלם", genre: "קומדיה", genre: "רומנטיקה" , genre: "חלק מהחיים"  },
+  { id: 12, title: "חייה של המוציאה להורג", year: 2022, episodes: 12, status: "פעיל", genre: "אקשן", genre: "הרפתקאות", genre: "דרמה", genre: "פנטזיה" },
   // Add more anime entries...
 ]
 
@@ -31,15 +42,22 @@ export default function AnimeList() {
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">רשימת אנימה</h1>
 
-      <div className="flex space-x-4">
+      <div className="flex space-x-4" style={{justifyContent: "space-evenly"}}>
         <select
           value={filter.genre}
           onChange={(e) => setFilter({ ...filter, genre: e.target.value })}
           className="p-2 rounded border dark:bg-gray-700"
         >
           <option value="">כל הז&apos;אנרים</option>
-          <option value="Action">אקשן</option>
-          <option value="Romance">רומנטיקה</option>
+          <option value="אקשן">אקשן</option>
+          <option value="רומנטיקה">רומנטיקה</option>
+          <option value="קומדיה">קומדיה</option>
+          <option value="חיי בית ספר">חיי בית ספר</option>
+          <option value="חלק מהחיים">חלק מהחיים</option>
+          <option value="דרמה">דרמה</option>
+          <option value="פנטזיה">פנטזיה</option>
+          <option value="על-טבעי">על-טבעי</option>
+          <option value="אימה">אימה</option>
           {/* Add more genre options */}
         </select>
 
@@ -49,8 +67,11 @@ export default function AnimeList() {
           className="p-2 rounded border dark:bg-gray-700"
         >
           <option value="">כל השנים</option>
+          <option value="2024">2024</option>
           <option value="2023">2023</option>
           <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2012">2012</option>
           {/* Add more year options */}
         </select>
 
@@ -60,8 +81,9 @@ export default function AnimeList() {
           className="p-2 rounded border dark:bg-gray-700"
         >
           <option value="">כל הסטטוסים</option>
-          <option value="Ongoing">מתמשך</option>
-          <option value="Completed">הושלם</option>
+          <option value="פעיל">פעיל</option>
+          <option value="הושלם">הושלם</option>
+          <option value="הוקפא">הוקפא</option>
         </select>
 
         <select value={sort} onChange={(e) => setSort(e.target.value)} className="p-2 rounded border dark:bg-gray-700">
@@ -76,7 +98,7 @@ export default function AnimeList() {
           <Link
             href={`/anime/${anime.id}`}
             key={anime.id}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow"
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-md align-content-center justify-items-center p-4 hover:shadow-lg transition-shadow "
           >
             <Image
               src={`/anime-placeholder-${anime.id}.jpg`}
