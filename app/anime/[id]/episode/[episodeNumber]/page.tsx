@@ -1,20 +1,24 @@
 import type { Metadata } from "next"
-import { use } from "react"
 import { getAnimeInfo, getEpisodeDriveId } from "@/lib/anime"
 import EpisodePlayer from "@/components/EpisodePlayer"
 
-type PageProps = {
-  params: Promise<{
-    id: string
-    episodeNumber: string
-  }>
+type Params = {
+  id: string
+  episodeNumber: string
+}
+
+type PageProps<T = Params> = {
+  params: T extends Promise<any> ? T : Promise<T>
   searchParams: Record<string, string | string[] | undefined>
 }
 
-export default function AnimePage({ params }: PageProps) {
-  const { id, episodeNumber } = use(params)
-  const animeInfo = use(getAnimeInfo(id))
-  const driveId = use(getEpisodeDriveId(id, episodeNumber))
+export default async function AnimePage({ params }: PageProps) {
+  const { id, episodeNumber } = await params
+
+  const animeInfoPromise = getAnimeInfo(id)
+  const driveIdPromise = getEpisodeDriveId(id, episodeNumber)
+
+  const [animeInfo, driveId] = await Promise.all([animeInfoPromise, driveIdPromise])
 
   if (!animeInfo || !driveId) {
     throw new Error("Anime or episode not found")
