@@ -66,6 +66,7 @@ async function getAnime(id: string): Promise<Anime | undefined> {
 }
 
 export default async function Page({ params }: PageProps) {
+  // Async fetch of anime data based on params.id
   const anime = await getAnime(params.id)
 
   if (!anime) {
