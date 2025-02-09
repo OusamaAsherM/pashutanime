@@ -8,7 +8,7 @@ type Params = {
 }
 
 type PageProps = {
-  params: Params // Correctly type params here as an object, not a promise
+  params: Params
   searchParams: Record<string, string | string[] | undefined>
 }
 
