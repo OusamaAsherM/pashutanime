@@ -44,7 +44,6 @@ const animeData: Anime[] = [
 
 type PageProps = {
   params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -66,7 +65,7 @@ async function getAnime(id: string): Promise<Anime | undefined> {
   return animeData.find((anime) => anime.id.toString() === id)
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
+export default async function Page({ params }: PageProps) {
   const anime = await getAnime(params.id)
 
   if (!anime) {
