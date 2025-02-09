@@ -106,7 +106,7 @@ export default async function Page({ params }: AnimePageProps) {
           </div>
           <p className="text-lg leading-relaxed">{anime.synopsis}</p>
           <div>
-            <h2 className="text-xl font-semibold mb-3">ז'אנרים:</h2>
+            <h2 className="text-xl font-semibold">ז&apos;אנרים:</h2>
             <div className="flex flex-wrap gap-2">
               {anime.genres.map((genre) => (
                 <span key={genre} className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">
