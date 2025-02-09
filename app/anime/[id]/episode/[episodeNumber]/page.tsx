@@ -8,12 +8,12 @@ type Params = {
 }
 
 type PageProps<T = Params> = {
-  params: T extends Promise<any> ? T : Promise<T>
+  params: T
   searchParams: Record<string, string | string[] | undefined>
 }
 
 export default async function AnimePage({ params }: PageProps) {
-  const { id, episodeNumber } = await params
+  const { id, episodeNumber } = params  // Directly use params, no need for await
 
   const animeInfoPromise = getAnimeInfo(id)
   const driveIdPromise = getEpisodeDriveId(id, episodeNumber)
@@ -34,7 +34,7 @@ export default async function AnimePage({ params }: PageProps) {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id, episodeNumber } = await params
+  const { id, episodeNumber } = params  // Directly use params
   const animeInfo = await getAnimeInfo(id)
 
   return {
@@ -42,4 +42,3 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `צפייה בפרק ${episodeNumber} של ${animeInfo?.title ?? "האנימה"}`,
   }
 }
-
