@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import type { Metadata } from "next"
 
 // Sample anime data structure
 type Episode = {
@@ -22,13 +23,38 @@ type Anime = {
 
 // Anime data array remains the same as provided
 const animeData: Anime[] = [
-  /* ... */
+  {
+    id: 1,
+    title: "Attack on Titan",
+    alternativeNames: ["Shingeki no Kyojin"],
+    coverImage: "/attack-on-titan.jpg",
+    trailer: "https://www.youtube.com/embed/t_n-z-f-Z7s",
+    synopsis: "Synopsis for Attack on Titan",
+    genres: ["Action", "Fantasy"],
+    episodes: [
+      { number: 1, title: "Episode 1" },
+      { number: 2, title: "Episode 2" },
+      { number: 3, title: "Episode 3" },
+    ],
+    fansubCredits: "Fansub Credits",
+    translationNotes: "Translation Notes",
+  },
+  // Add more anime data here...
 ]
 
-// Fix the type error by properly typing the params
-type Props = {
+type PageProps = {
   params: {
     id: string
+  }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const anime = animeData.find((anime) => anime.id.toString() === params.id)
+
+  return {
+    title: anime ? `${anime.title} | פשוט אנימה` : "אנימה לא נמצאה | פשוט אנימה",
+    description: anime?.synopsis || "אנימה לא נמצאה",
   }
 }
 
@@ -38,7 +64,7 @@ export function generateStaticParams() {
   }))
 }
 
-export default function AnimePage({ params }: Props) {
+export default async function AnimePage({ params }: PageProps) {
   const anime = animeData.find((anime) => anime.id.toString() === params.id)
 
   if (!anime) {
