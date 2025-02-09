@@ -15,7 +15,7 @@ export function getAnimeInfo(id: string): Promise<AnimeInfo | null> {
   })
 }
 
-export function getEpisodeDriveId(animeId: string, episodeNumber: string): Promise<string | null> {
+export function getEpisodeDriveId(): Promise<string | null> { // Removed unused animeId and episodeNumber
   return new Promise((resolve) => {
     // כאן תהיה הלוגיקה האמיתית לקבלת מזהה הקובץ מגוגל דרייב
     setTimeout(() => {
