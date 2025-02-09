@@ -42,11 +42,7 @@ const animeData: Anime[] = [
   // Add more anime data here...
 ]
 
-type GenerateMetadataProps = {
-  params: { id: string }
-}
-
-export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const anime = animeData.find((anime) => anime.id.toString() === params.id)
 
   return {
@@ -61,11 +57,7 @@ export function generateStaticParams() {
   }))
 }
 
-type PageProps = {
-  params: { id: string }
-}
-
-export default function AnimePage({ params }: PageProps) {
+export default function Page({ params }: { params: { id: string } }) {
   const anime = animeData.find((anime) => anime.id.toString() === params.id)
 
   if (!anime) {
