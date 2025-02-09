@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import { Metadata } from "next"
 import { getAnimeInfo, getEpisodeDriveId } from "@/lib/anime"
 import EpisodePlayer from "@/app/components/EpisodePlayer"
 
@@ -13,7 +13,7 @@ type PageProps = {
 }
 
 export default async function AnimePage({ params }: PageProps) {
-  const { id, episodeNumber } = params // Directly use params, no need for await
+  const { id, episodeNumber } = params
 
   const animeInfoPromise = getAnimeInfo(id)
   const driveIdPromise = getEpisodeDriveId(id, episodeNumber)
@@ -34,7 +34,7 @@ export default async function AnimePage({ params }: PageProps) {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id, episodeNumber } = params // Directly use params
+  const { id, episodeNumber } = params
   const animeInfo = await getAnimeInfo(id)
 
   return {
