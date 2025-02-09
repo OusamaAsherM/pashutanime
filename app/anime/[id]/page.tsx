@@ -42,11 +42,12 @@ const animeData: Anime[] = [
   // Add more anime data here...
 ]
 
-type PageProps = {
+// Rename custom type to avoid conflict with Next.js built-in PageProps.
+type AnimePageProps = {
   params: { id: string }
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: AnimePageProps): Promise<Metadata> {
   const anime = animeData.find((anime) => anime.id.toString() === params.id)
 
   return {
@@ -65,7 +66,7 @@ async function getAnime(id: string): Promise<Anime | undefined> {
   return animeData.find((anime) => anime.id.toString() === id)
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: AnimePageProps) {
   // Ensure params is resolved asynchronously
   const anime = await getAnime(params.id)
 
@@ -105,7 +106,7 @@ export default async function Page({ params }: PageProps) {
           </div>
           <p className="text-lg leading-relaxed">{anime.synopsis}</p>
           <div>
-            <h2 className="text-xl font-semibold mb-3">ז&apos;אנרים:</h2>
+            <h2 className="text-xl font-semibold mb-3">ז'אנרים:</h2>
             <div className="flex flex-wrap gap-2">
               {anime.genres.map((genre) => (
                 <span key={genre} className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">
