@@ -7,8 +7,8 @@ type Params = {
   episodeNumber: string
 }
 
-type PageProps<T = Params> = {
-  params: T
+type PageProps = {
+  params: Params // Correctly type params here as an object, not a promise
   searchParams: Record<string, string | string[] | undefined>
 }
 
