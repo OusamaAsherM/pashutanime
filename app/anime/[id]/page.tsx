@@ -42,8 +42,10 @@ const animeData: Anime[] = [
   // Add more anime data here...
 ]
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const anime = animeData.find((anime) => anime.id.toString() === params.id)
+// Update the types for route parameters to be Promise-wrapped
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const anime = animeData.find((anime) => anime.id.toString() === id)
 
   return {
     title: anime ? `${anime.title} | פשוט אנימה` : "אנימה לא נמצאה | פשוט אנימה",
@@ -61,9 +63,10 @@ async function getAnime(id: string): Promise<Anime | undefined> {
   return animeData.find((anime) => anime.id.toString() === id)
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
-  // Ensure params is resolved asynchronously
-  const anime = await getAnime(params.id)
+// Note the updated type for params and the await inside the function
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const anime = await getAnime(id)
 
   if (!anime) {
     return (
