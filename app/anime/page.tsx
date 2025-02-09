@@ -3,22 +3,20 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { p } from "framer-motion/m"
 
 const animeList = [
-  { id: 1, title: "השכנה המלאכית מפנקת אותי", year: 2023, episodes: 12, status: "הושלם", genre: "רומנטיקה", genre: "חיי בית ספר", genre: "חלק מהחיים", genre: "קומדיה"},
-  { id: 2, title: "עלמת חושך עם אמנזיה", year: 2012, episodes: 12, status: "הושלם", genre: "אקשן", genre: "אימה", genre: "מיסתורין", genre: "רומנטיקה", genre: "על טבעי", genre: "אצ'י", },
-  { id: 3, title: "נולד מחדש כדי לשלוט בלהב, ממלך גיבור לנושאת כלים יוצאת דופן", year: 2023, episodes: 12, status: "הושלם", genre: "אקשן", genre: "פנטזיה", genre: "קומדיה", genre: "הרפתקאות" },
-  { id: 4, title: "המהפכה הקסומה של הנסיכה שנולדה מחדש והגברת הצעירה הגאונה", year: 2023, episodes: 12, status: "הושלם", genre: "רומנטיקה", genre: "פנטזיה" },
-  { id: 5, title: "המלאכית הטיפשה רוקדת עם השד", year: 2024, episodes: 12, status: "הושלם", genre: "רומנטיקה", genre: "פנטזיה", genre: "על-טבעי" },
-  { id: 6, title: "שקרן שקרן", year: 2023, episodes: 12, status: "הושלם", genre: "פסיכולוגי", genre: "רומנטיקה" },
-  { id: 7, title: "ברמן: כוס האל", year: 2024, episodes: 12, status: "הושלם", genre: "דרמה", genre: "חלק מהחיים" },
-  { id: 8, title: "אליה סאן מסתירה את הרגשות שלה ברוסית", year: 2024, episodes: 12, status: "הושלם", genre: "קומדיה", genre: "רומנטיקה", genre: "חלק מהחיים" },
-  { id: 9, title: "סופר קאב", year: 2021, episodes: 12, status: "הושלם", genre: "חלק מהחיים" },
-  { id: 10, title: "אוזומאקי", year: 2024, episodes: 4, status: "הושלם", genre: "דרמה", genre: "אימה", genre: "מיסתורין", genre: "על-טבעי" },
-  { id: 11, title:"הנער החולם רוצה להיות מציאותי", year: 2023, episodes: 12, status: "הושלם", genre: "קומדיה", genre: "רומנטיקה" , genre: "חלק מהחיים"  },
-  { id: 12, title: "חייה של המוציאה להורג", year: 2022, episodes: 12, status: "פעיל", genre: "אקשן", genre: "הרפתקאות", genre: "דרמה", genre: "פנטזיה" },
-  // Add more anime entries...
+  { id: 1, title: "השכנה המלאכית מפנקת אותי", year: 2023, episodes: 12, status: "הושלם", genres: ["רומנטיקה", "חיי בית ספר", "חלק מהחיים", "קומדיה"] },
+  { id: 2, title: "עלמת חושך עם אמנזיה", year: 2012, episodes: 12, status: "הושלם", genres: ["אקשן", "אימה", "מיסתורין", "רומנטיקה", "על טבעי", "אצ'י"] },
+  { id: 3, title: "נולד מחדש כדי לשלוט בלהב, ממלך גיבור לנושאת כלים יוצאת דופן", year: 2023, episodes: 12, status: "הושלם", genres: ["אקשן", "פנטזיה", "קומדיה", "הרפתקאות"] },
+  { id: 4, title: "המהפכה הקסומה של הנסיכה שנולדה מחדש והגברת הצעירה הגאונה", year: 2023, episodes: 12, status: "הושלם", genres: ["רומנטיקה", "פנטזיה"] },
+  { id: 5, title: "המלאכית הטיפשה רוקדת עם השד", year: 2024, episodes: 12, status: "הושלם", genres: ["רומנטיקה", "פנטזיה", "על-טבעי"] },
+  { id: 6, title: "שקרן שקרן", year: 2023, episodes: 12, status: "הושלם", genres: ["פסיכולוגי", "רומנטיקה"] },
+  { id: 7, title: "ברמן: כוס האל", year: 2024, episodes: 12, status: "הושלם", genres: ["דרמה", "חלק מהחיים"] },
+  { id: 8, title: "אליה סאן מסתירה את הרגשות שלה ברוסית", year: 2024, episodes: 12, status: "הושלם", genres: ["קומדיה", "רומנטיקה", "חלק מהחיים"] },
+  { id: 9, title: "סופר קאב", year: 2021, episodes: 12, status: "הושלם", genres: ["חלק מהחיים"] },
+  { id: 10, title: "אוזומאקי", year: 2024, episodes: 4, status: "הושלם", genres: ["דרמה", "אימה", "מיסתורין", "על-טבעי"] },
+  { id: 11, title: "הנער החולם רוצה להיות מציאותי", year: 2023, episodes: 12, status: "הושלם", genres: ["קומדיה", "רומנטיקה", "חלק מהחיים"] },
+  { id: 12, title: "חייה של המוציאה להורג", year: 2022, episodes: 12, status: "פעיל", genres: ["אקשן", "הרפתקאות", "דרמה", "פנטזיה"] },
 ]
 
 export default function AnimeList() {
@@ -27,7 +25,7 @@ export default function AnimeList() {
 
   const filteredAnime = animeList.filter(
     (anime) =>
-      (!filter.genre || anime.genre === filter.genre) &&
+      (!filter.genre || anime.genres.includes(filter.genre)) &&
       (!filter.year || anime.year.toString() === filter.year) &&
       (!filter.status || anime.status === filter.status),
   )
@@ -58,7 +56,6 @@ export default function AnimeList() {
           <option value="פנטזיה">פנטזיה</option>
           <option value="על-טבעי">על-טבעי</option>
           <option value="אימה">אימה</option>
-          {/* Add more genre options */}
         </select>
 
         <select
@@ -72,7 +69,6 @@ export default function AnimeList() {
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2012">2012</option>
-          {/* Add more year options */}
         </select>
 
         <select
@@ -117,4 +113,3 @@ export default function AnimeList() {
     </div>
   )
 }
-
