@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import { getAnimeInfo, getEpisodeDriveId } from "@/lib/anime"
 import EpisodePlayer from "@/app/components/EpisodePlayer"
 
@@ -9,7 +9,7 @@ type Params = {
 
 type PageProps = {
   params: Params
-  searchParams: Record<string, string | string[] | undefined>
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export default async function AnimePage({ params }: PageProps) {
@@ -42,3 +42,4 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `צפייה בפרק ${episodeNumber} של ${animeInfo?.title ?? "האנימה"}`,
   }
 }
+
