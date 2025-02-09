@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { getAnimeInfo, getEpisodeDriveId } from "@/lib/anime"
-import EpisodePlayer from "@/components/EpisodePlayer";
+import EpisodePlayer from "../../../../../components/EpisodePlayer";
 
 
 type Params = {
