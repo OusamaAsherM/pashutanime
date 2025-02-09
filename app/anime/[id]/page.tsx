@@ -42,12 +42,7 @@ const animeData: Anime[] = [
   // Add more anime data here...
 ]
 
-// Rename custom type to avoid conflict with Next.js built-in PageProps.
-type AnimePageProps = {
-  params: { id: string }
-}
-
-export async function generateMetadata({ params }: AnimePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const anime = animeData.find((anime) => anime.id.toString() === params.id)
 
   return {
@@ -66,7 +61,7 @@ async function getAnime(id: string): Promise<Anime | undefined> {
   return animeData.find((anime) => anime.id.toString() === id)
 }
 
-export default async function Page({ params }: AnimePageProps) {
+export default async function Page({ params }: { params: { id: string } }) {
   // Ensure params is resolved asynchronously
   const anime = await getAnime(params.id)
 
