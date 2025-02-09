@@ -48,10 +48,8 @@ type PageParams = {
 
 export async function generateMetadata({
   params,
-  searchParams,
 }: {
   params: PageParams
-  searchParams: { [key: string]: string | string[] | undefined }
 }): Promise<Metadata> {
   const anime = animeData.find((anime) => anime.id.toString() === params.id)
 
