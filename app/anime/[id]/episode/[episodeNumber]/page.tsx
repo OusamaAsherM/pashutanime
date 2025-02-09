@@ -2,15 +2,13 @@ import type { Metadata } from "next"
 import { getAnimeInfo, getEpisodeDriveId } from "@/lib/anime"
 import EpisodePlayer from "@/app/components/EpisodePlayer"
 
-interface PageProps {
-  params: {
-    id: string
-    episodeNumber: string
-  }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+export default async function AnimePage({
+  params,
+}: {
+  params: Promise<{ id: string; episodeNumber: string }>
+}) {
+  const { id, episodeNumber } = await params
 
-export default async function AnimePage({ params: { id, episodeNumber } }: PageProps) {
   const animeInfoPromise = getAnimeInfo(id)
   const driveIdPromise = getEpisodeDriveId(id, episodeNumber)
 
@@ -29,7 +27,12 @@ export default async function AnimePage({ params: { id, episodeNumber } }: PageP
   )
 }
 
-export async function generateMetadata({ params: { id, episodeNumber } }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string; episodeNumber: string }>
+}): Promise<Metadata> {
+  const { id, episodeNumber } = await params
   const animeInfo = await getAnimeInfo(id)
 
   return {
